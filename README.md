@@ -47,6 +47,23 @@ Se evidencia la configuración del presupuesto realizada en Azure.
 
 </td>
 </tr>
+<tr>
+<td width="50%">
+
+### ☁️ Evidencia 3
+
+**Alerta de presupuesto configurada con limite de USD 10 y notificación por correo**
+
+Se evidencia la configuración de alertas a presupuesto.
+
+</td>
+
+<td width="50%" align="center">
+
+<img src="img/AlertaPresupuesto.png" width="450">
+
+</td>
+</tr>
 </table>
 
 </details>
