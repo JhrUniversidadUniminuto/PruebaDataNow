@@ -146,6 +146,22 @@ Se evidencia los beneficios de la cuenta estudiantil.
 
 </td>
 </tr>
+<tr>
+<td width="50%">
+
+### ☁️ Evidencia 9
+
+**Repositorio Git creado en GitHub, GitLab o Bitbucket con acceso compartido al evaluador**
+
+Se evidencia repositorio Git Creado.
+</td>
+
+<td width="50%" align="center">
+
+<img src="img/GitPublico.png" width="450">
+
+</td>
+</tr>
 </table>
 
 </details>
