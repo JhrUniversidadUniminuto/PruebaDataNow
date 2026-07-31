@@ -1,11 +1,16 @@
-<div align="center">
+# 📋 Resultados y Evidencias - Prueba Técnica
 
-# 📋 Resultados y Evidencias
-## Prueba Técnica - Julián Herrera
+## 📑 Contenido
 
-</div>
+- 📸 Evidencias
+- 📄 Documentación
 
 ---
+
+<details>
+<summary>📸 <strong>Ver evidencias</strong></summary>
+
+<br>
 
 <table>
 <tr>
@@ -27,4 +32,21 @@ Se evidencia la configuración del presupuesto realizada en Azure.
 </tr>
 </table>
 
+</details>
+
 ---
+
+<details>
+<summary>📄 <strong>Ver documentación</strong></summary>
+
+<br>
+
+Aquí puedes agregar:
+
+- Explicación del procedimiento.
+- Enlaces a documentos PDF.
+- Capturas adicionales.
+- Código utilizado.
+- Referencias.
+
+</details>
