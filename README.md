@@ -162,6 +162,22 @@ Se evidencia repositorio Git Creado.
 
 </td>
 </tr>
+<tr>
+<td width="50%">
+
+### ☁️ Evidencia 10
+
+**Herramienta de IaC instalada localmente: Terraform, Bicep, AWS CLI o gcloud CLI según la plataforma**
+
+Se evidencia localmente instalado el Azure Cli.
+</td>
+
+<td width="50%" align="center">
+
+<img src="img/CliAzureLocal.png" width="450">
+
+</td>
+</tr>
 </table>
 
 </details>
