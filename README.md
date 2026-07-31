@@ -178,6 +178,22 @@ Se evidencia localmente instalado el Azure Cli.
 
 </td>
 </tr>
+<tr>
+<td width="50%">
+
+### ☁️ Evidencia 11
+
+**CLI de la plataforma cloud instalado y autenticado correctamente en el equipo local**
+
+Se evidencia localmente ejecutándose el Azure Cli.
+</td>
+
+<td width="50%" align="center">
+
+<img src="img/CliAutenticadoCorrectamente.png" width="450">
+
+</td>
+</tr>
 </table>
 
 </details>
