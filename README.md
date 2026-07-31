@@ -129,6 +129,23 @@ Se evidencia el correo electrónico verificado.
 
 </td>
 </tr>
+
+<tr>
+<td width="50%">
+
+### ☁️ Evidencia 8
+
+**Beneficios de correo estudiantil activados si el candidato dispone de correo institucional**
+
+Se evidencia los beneficios de la cuenta estudiantil.
+</td>
+
+<td width="50%" align="center">
+
+<img src="img/ContactoVerificadoAzure.png" width="450">
+
+</td>
+</tr>
 </table>
 
 </details>
