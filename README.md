@@ -142,7 +142,7 @@ Se evidencia los beneficios de la cuenta estudiantil.
 
 <td width="50%" align="center">
 
-<img src="img/ContactoVerificadoAzure.png" width="450">
+<img src="img/suscripcion.png" width="450">
 
 </td>
 </tr>
