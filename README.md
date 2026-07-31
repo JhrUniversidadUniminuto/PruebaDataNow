@@ -205,12 +205,10 @@ Se evidencia localmente ejecutándose el Azure Cli y el portal web de Azure.
 </td>
 
 <td width="50%" align="center">
-<tr>
+
 <img src="img/PruebaAzureTerminal.png" width="450">
-</tr>
-<tr>
+<br>
 <img src="img/PortalWebAzure.png" width="450">
-</tr>  
 </td>
 </tr>
 </table>
