@@ -81,6 +81,23 @@ Se evidencia los métodos de pago que están asociados.
 
 </td>
 </tr>
+</tr>
+<tr>
+<td width="50%">
+
+### ☁️ Evidencia 5
+
+**autenticación de doble factor activada en la cuenta cloud para protección de la cuenta**
+
+Se evidencia inicio sección con doble factor.
+</td>
+
+<td width="50%" align="center">
+
+<img src="img/SeccionDobleFactor.png" width="450">
+
+</td>
+</tr>
 </table>
 
 </details>
