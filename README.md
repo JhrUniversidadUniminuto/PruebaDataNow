@@ -2,7 +2,7 @@
 
 ## 📑 Contenido
 
-- 📸 Evidencias
+- 📸 Evidencias Creación cuenta Cloud
 - 📄 Documentación
 
 ---
@@ -19,6 +19,23 @@
 ### ☁️ Evidencia 1
 
 **Creación de presupuestos en Microsoft Azure**
+
+Se evidencia la cuenta creada en Azure.
+
+</td>
+
+<td width="50%" align="center">
+
+<img src="img/CuentaCreadaAzure.png" width="450">
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### ☁️ Evidencia 2
+
+**Crédito Gratuito**
 
 Se evidencia la configuración del presupuesto realizada en Azure.
 
