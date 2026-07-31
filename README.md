@@ -98,6 +98,24 @@ Se evidencia inicio sección con doble factor.
 
 </td>
 </tr>
+</tr>
+</tr>
+<tr>
+<td width="50%">
+
+### ☁️ Evidencia 6
+
+**Region de trabajo seleccionada: East US para Azure y AWS, us-central1 para GCP**
+
+Se evidencia inicio sección con doble factor.
+</td>
+
+<td width="50%" align="center">
+
+<img src="img/RegionAzure.png" width="450">
+
+</td>
+</tr>
 </table>
 
 </details>
