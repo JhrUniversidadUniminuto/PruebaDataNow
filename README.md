@@ -81,7 +81,6 @@ Se evidencia los métodos de pago que están asociados.
 
 </td>
 </tr>
-</tr>
 <tr>
 <td width="50%">
 
@@ -98,8 +97,6 @@ Se evidencia inicio sección con doble factor.
 
 </td>
 </tr>
-</tr>
-</tr>
 <tr>
 <td width="50%">
 
@@ -107,12 +104,28 @@ Se evidencia inicio sección con doble factor.
 
 **Region de trabajo seleccionada: East US para Azure y AWS, us-central1 para GCP**
 
-Se evidencia inicio sección con doble factor.
+Se evidencia región donde esta creados los recursos.
 </td>
 
 <td width="50%" align="center">
 
 <img src="img/RegionAzure.png" width="450">
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### ☁️ Evidencia 7
+
+**Correo electrónico y numero de teléfono verificados en el portal de la plataforma**
+
+Se evidencia el correo electrónico verificado.
+</td>
+
+<td width="50%" align="center">
+
+<img src="img/ContactoVerificadoAzure.png" width="450">
 
 </td>
 </tr>
