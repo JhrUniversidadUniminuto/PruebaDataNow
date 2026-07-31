@@ -64,6 +64,23 @@ Se evidencia la configuración de alertas a presupuesto.
 
 </td>
 </tr>
+<tr>
+<td width="50%">
+
+### ☁️ Evidencia 4
+
+**método de pago verificado y funcional, incluso si el saldo disponible es mínimo**
+
+Se evidencia los métodos de pago que están asociados.
+
+</td>
+
+<td width="50%" align="center">
+
+<img src="img/metodopago.png" width="450">
+
+</td>
+</tr>
 </table>
 
 </details>
