@@ -222,12 +222,257 @@ Se evidencia localmente ejecutándose el Azure Cli y el portal web de Azure.
 
 <br>
 
-Aquí puedes agregar:
+<h1>🚚 DOCUMENTACIÓN TÉCNICA Y ENTREGABLE FINAL</h1>
+<p><strong>Empresa:</strong> LogiTrack S.A.S. (Logística y Cadena de Suministro)</p>
+<p><strong>Plataforma Cloud:</strong> Microsoft Azure</p>
+<p><strong>Arquitectura:</strong> Medallón (Bronze, Silver, Gold) sobre Azure Data Lake Storage Gen2 (ADLS Gen2)</p>
 
-- Explicación del procedimiento.
-- Enlaces a documentos PDF.
-- Capturas adicionales.
-- Código utilizado.
-- Referencias.
+<hr>
+
+<h2>💡 1. Justificación del Escenario y Plataforma</h2>
+<ul>
+    <li><strong>Sector Seleccionado:</strong> Escenario D - Logística y Cadena de Suministro (LogiTrack S.A.S.)[cite: 1].
+        <ul>
+            <li><em>Justificación:</em> Permite resolver la problemática de la alta tasa de entregas fallidas (14.3%)[cite: 1] mediante la consolidación de más de 2 millones de envíos[cite: 1] y datos de telemetría GPS. Permite calcular un <em>Score de Desempeño Multidimensional</em> justo para conductores[cite: 1] y detectar alertas de retrasos en zonas críticas[cite: 1].</li>
+        </ul>
+    </li>
+    <li><strong>Plataforma Cloud:</strong> Microsoft Azure.
+        <ul>
+            <li><em>Justificación:</em> Proporciona una suite nativa para soluciones de Big Data y analítica enterprise mediante ADLS Gen2, Azure Data Factory y Azure Key Vault para la protección de secretos.</li>
+        </ul>
+    </li>
+</ul>
+
+<hr>
+
+<h2>🎲 2. Entregable Fase 1: Generación de Datos y Modelo Relacional</h2>
+
+<h3>2.1 Configuración de Generación (<code>data-generation/config.yaml</code>)</h3>
+<pre><code>generation_parameters:
+  seed: 42
+  date_range:
+    start_date: "2025-01-01"
+    end_date: "2025-12-31"
+  tables:
+    OPE_CONDUCTORES: 500
+    CLI_REMITENTES: 200
+    GEO_ZONAS: 300
+    TMS_ENVIOS: 2000000
+    GPS_RUTAS: 100000
+    CAL_DESTINATARIOS: 300000
+    DIR_NOVEDADES: 150000
+  anomalies:
+    duplicate_rate: 0.01
+    null_rate: 0.05
+</code></pre>
+
+<h3>2.2 Relaciones Clave del Modelo Entidad-Relación (ER)</h3>
+<p>Ubicación del diagrama: <code>/docs/diagrama_er.png</code></p>
+<ul>
+    <li><code>TMS_ENVIOS.id_remitente</code> ➡️ <code>CLI_REMITENTES.id_remitente</code></li>
+    <li><code>TMS_ENVIOS.cond_id</code> ➡️ <code>OPE_CONDUCTORES.cond_id</code></li>
+    <li><code>TMS_ENVIOS.id_zona_destino</code> ➡️ <code>GEO_ZONAS.id_zona</code></li>
+    <li><code>GPS_RUTAS.cond_id</code> ➡️ <code>OPE_CONDUCTORES.cond_id</code></li>
+    <li><code>CAL_DESTINATARIOS.id_envio</code> ➡️ <code>TMS_ENVIOS.id_envio</code></li>
+    <li><code>DIR_NOVEDADES.id_envio</code> ➡️ <code>TMS_ENVIOS.id_envio</code></li>
+</ul>
+
+<hr>
+
+<h2>🏗️ 3. Entregable Fase 2: Infraestructura como Código (IaC)</h2>
+<p>Aprovisionamiento modular con <strong>Terraform</strong> en <code>/infra</code>:</p>
+<ul>
+    <li><code>azurerm_resource_group</code>: Grupo de recursos principal <code>rg-datanow-prod</code>.</li>
+    <li><code>azurerm_storage_account</code>: ADLS Gen2 habilitado con contenedores <code>bronze</code>, <code>silver</code> y <code>gold</code>.</li>
+    <li><code>azurerm_key_vault</code>: Almacenamiento seguro de credenciales sin claves expuestas.</li>
+    <li><code>azurerm_log_analytics_workspace</code>: Trazabilidad y monitoreo centralizado.</li>
+</ul>
+
+<hr>
+
+<h2>🏅 4. Entregable Fase 3: Pipeline End-to-End (Arquitectura Medallón)</h2>
+
+<h3>4.1 Capas del Pipeline</h3>
+<ul>
+    <li><strong>Capa Bronze (<code>01_bronze_ingestion.py</code>):</strong> Ingesta cruda incremental en Parquet/Delta con metadatos de auditoría (<code>_ingestion_timestamp</code>, <code>_source_system</code>, <code>_batch_id</code>) y particionamiento por fecha (<code>año/mes/día</code>).</li>
+    <li><strong>Capa Silver (<code>02_silver_transformation.py</code>):</strong> Limpieza de nulos corrompidos, eliminación de duplicados, deduplicación y enmascaramiento con <strong>Hash SHA-256</strong> para PII (<code>num_doc_hash</code>). Los registros erróneos se canalizan a <code>silver_error_records</code>[cite: 1].</li>
+    <li><strong>Capa Gold (<code>03_gold_transformation.py</code>):</strong> Construcción del modelo en estrella (Star Schema) aplicando reglas de negocio.</li>
+</ul>
+
+<h3>4.2 Documentación de Linaje de Datos (Data Lineage)</h3>
+<table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Campo Calculado (Gold)</th>
+            <th>Tabla Destino</th>
+            <th>Tabla(s) Origen (Silver)</th>
+            <th>Transformación / Regla de Negocio Aplicada</th>
+            <th>Propósito Analítico</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong><code>score_desempeno</code></strong></td>
+            <td><code>fact_desempeno_conductor</code></td>
+            <td><code>tms_envios</code><br><code>gps_rutas</code><br><code>cal_destinatarios</code></td>
+            <td>Promedio ponderado normalizado (0.0 a 1.0):<br><code>(tasa_exito * 0.35) + (adherencia_ruta * 0.20) + (velocidad_norm * 0.20) + (inversa_intentos * 0.15) + (calific_norm * 0.10)</code>[cite: 1]</td>
+            <td>Asignación justa de bonos basada en desempeño multidimensional[cite: 1].</td>
+        </tr>
+        <tr>
+            <td><strong><code>clasificacion_retraso</code></strong></td>
+            <td><code>fact_envios</code></td>
+            <td><code>tms_envios</code></td>
+            <td>Diferencia en horas entre <code>fec_entrega_real</code> y <code>fec_entrega_programada</code>[cite: 1].<br>• <code>&lt;=0h</code>: A tiempo<br>• <code>1-4h</code>: Retraso leve<br>• <code>4-24h</code>: Retraso moderado<br>• <code>&gt;24h</code>: Retraso crítico[cite: 1]</td>
+            <td>Cuantificar penalizaciones de SLA e identificar cuellos de botella[cite: 1].</td>
+        </tr>
+        <tr>
+            <td><strong><code>alerta_desviacion</code></strong></td>
+            <td><code>fact_alertas_zona</code></td>
+            <td><code>tms_envios</code><br><code>geo_zonas</code></td>
+            <td>Compara la tasa de fallo actual vs el promedio de las últimas 4 semanas. Se activa si supera en <strong>&gt;25%</strong> la media histórica[cite: 1].</td>
+            <td>Distinguir fallos estructurales de la zona vs fallos del conductor[cite: 1].</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>4.3 Pruebas Automatizadas de Calidad de Datos</h3>
+<ol>
+    <li><strong>Integridad Referencial:</strong> Claves primarias no nulas en <code>fact_envios</code>.</li>
+    <li><strong>Unicidad:</strong> Cero registros duplicados en <code>dim_conductores</code>.</li>
+    <li><strong>Anonimización PII:</strong> Formato Hash SHA-256 validado en <code>num_doc_hash</code>.</li>
+    <li><strong>Rangos Válidos:</strong> <code>score_desempeno</code> restringido estrictamente entre <code>0.0</code> y <code>1.0</code>[cite: 1].</li>
+    <li><strong>No Vacío:</strong> Verificación de registros poblados en <code>kpi_executive_dashboard</code>.</li>
+</ol>
+
+<hr>
+
+<h2>⚙️ 5. Entregable Fase 4: Orquestación del Pipeline</h2>
+<ul>
+    <li><strong>DAG de Orquestación:</strong> <code>orchestration/dag_datanow_pipeline.py</code>.</li>
+    <li><strong>Programación (CRON):</strong> Diaria a las <strong>02:00 AM</strong> local (<code>0 2 * * *</code>).</li>
+    <li><strong>Política de Reintentos:</strong> 3 reintentos automáticos con intervalo de <strong>Backoff Exponencial</strong>.</li>
+    <li><strong>Alertas y Notificaciones:</strong> Correos automatizados ante fallo de tarea (<code>on_failure_callback</code>) y reporte consolidado diario ante éxito.</li>
+</ul>
+
+<hr>
+
+<h2>🔐 6. Entregable Fase 5: Gobierno, Seguridad y Calidad de Datos</h2>
+
+<h3>6.1 Matriz de Roles y Accesos (RBAC)</h3>
+<table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Rol</th>
+            <th>Permisos en Azure IAM / AD</th>
+            <th>Capa Bronze</th>
+            <th>Capa Silver</th>
+            <th>Capa Gold</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Data Engineer</strong></td>
+            <td>Contributor + Storage Blob Data Contributor</td>
+            <td>Lectura / Escritura</td>
+            <td>Lectura / Escritura</td>
+            <td>Lectura / Escritura</td>
+        </tr>
+        <tr>
+            <td><strong>Data Analyst</strong></td>
+            <td>Reader + Storage Blob Data Reader (Solo Gold)</td>
+            <td>❌ Acceso Denegado</td>
+            <td>❌ Acceso Denegado</td>
+            <td>Lectura (Datos Anonimizados)</td>
+        </tr>
+        <tr>
+            <td><strong>Administrator</strong></td>
+            <td>Owner / User Access Administrator</td>
+            <td>Control Total</td>
+            <td>Control Total</td>
+            <td>Control Total</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>6.2 Catálogo de Datos Básico</h3>
+
+<h4>Tabla: <code>dim_conductores</code> (Capa Gold)</h4>
+<table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Origen</th>
+            <th>Sensible (PII)</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>cond_id</code></td>
+            <td><code>INT</code></td>
+            <td><code>OPE_CONDUCTORES</code></td>
+            <td>No</td>
+            <td>Identificador único del conductor.</td>
+        </tr>
+        <tr>
+            <td><code>num_doc_hash</code></td>
+            <td><code>STRING</code></td>
+            <td><code>OPE_CONDUCTORES</code></td>
+            <td><strong>Sí (Enmascarado)</strong></td>
+            <td>Hash SHA-256 del número de documento original[cite: 1].</td>
+        </tr>
+        <tr>
+            <td><code>tip_vehiculo</code></td>
+            <td><code>STRING</code></td>
+            <td><code>OPE_CONDUCTORES</code></td>
+            <td>No</td>
+            <td>Categoría estandarizada (Moto, Bicicleta, Van, Camión)[cite: 1].</td>
+        </tr>
+        <tr>
+            <td><code>antiguedad_anos</code></td>
+            <td><code>FLOAT</code></td>
+            <td>Calculado</td>
+            <td>No</td>
+            <td>Antigüedad en años calculada a partir de <code>fec_ingreso</code>[cite: 1].</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Tabla: <code>fact_desempeno_conductor</code> (Capa Gold)</h4>
+<table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Origen</th>
+            <th>Sensible (PII)</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>cond_id</code></td>
+            <td><code>INT</code></td>
+            <td><code>OPE_CONDUCTORES</code></td>
+            <td>No</td>
+            <td>Identificador del conductor.</td>
+        </tr>
+        <tr>
+            <td><code>fec_evaluacion</code></td>
+            <td><code>DATE</code></td>
+            <td><code>TMS_ENVIOS</code> / <code>GPS_RUTAS</code></td>
+            <td>No</td>
+            <td>Fecha de consolidación del desempeño.</td>
+        </tr>
+        <tr>
+            <td><code>score_desempeno</code></td>
+            <td><code>FLOAT</code></td>
+            <td>Calculado</td>
+            <td>No</td>
+            <td>Score multidimensional ponderado (rango 0.0 - 1.0)[cite: 1].</td>
+        </tr>
+    </tbody>
+</table>
 
 </details>
