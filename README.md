@@ -231,9 +231,9 @@ Se evidencia localmente ejecutándose el Azure Cli y el portal web de Azure.
 
 <h2>💡 1. Justificación del Escenario y Plataforma</h2>
 <ul>
-    <li><strong>Sector Seleccionado:</strong> Escenario D - Logística y Cadena de Suministro (LogiTrack S.A.S.)[cite: 1].
+    <li><strong>Sector Seleccionado:</strong> Escenario D - Logística y Cadena de Suministro (LogiTrack S.A.S.).
         <ul>
-            <li><em>Justificación:</em> Permite resolver la problemática de la alta tasa de entregas fallidas (14.3%)[cite: 1] mediante la consolidación de más de 2 millones de envíos[cite: 1] y datos de telemetría GPS. Permite calcular un <em>Score de Desempeño Multidimensional</em> justo para conductores[cite: 1] y detectar alertas de retrasos en zonas críticas[cite: 1].</li>
+            <li><em>Justificación:</em> Permite resolver la problemática de la alta tasa de entregas fallidas (14.3%) mediante la consolidación de más de 2 millones de envíos y datos de telemetría GPS. Permite calcular un <em>Score de Desempeño Multidimensional</em> justo para conductores y detectar alertas de retrasos en zonas críticas.</li>
         </ul>
     </li>
     <li><strong>Plataforma Cloud:</strong> Microsoft Azure.
