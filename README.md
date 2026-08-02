@@ -338,7 +338,19 @@ README:
   </li>
     
 </ul>
+<h3>3.2 Evidencia del despliegue exitoso: captura de pantalla del portal o salida del terminal con el resultado del apply</h3>
 
+<p>
+Imagen evidencia:
+</p>
+<ul>
+  <li>
+    <strong>Evidencia:</strong>
+    <img src="img/TerraformaIniciado.png" width="450">
+    <img src="img/TerraformAplicado.png" width="450">
+  </li>
+    
+</ul>
 <hr>
 
 <h2>🏅 4. Entregable Fase 3: Pipeline End-to-End (Arquitectura Medallón)</h2>
