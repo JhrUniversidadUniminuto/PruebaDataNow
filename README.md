@@ -362,77 +362,20 @@ La siguiente tabla resume los recursos desplegados en Microsoft Azure mediante I
 </p>
 
 <br>
+<p align="center">
+<img src="img/RecursosCreadosAzure.png" width="900">
+</p>
 
-<table border="1" cellspacing="0" cellpadding="6" width="100%">
-    <thead>
-        <tr bgcolor="#E6F2FF">
-            <th>Recurso</th>
-            <th>Tipo</th>
-            <th>Región</th>
-            <th>Propósito dentro de la solución</th>
-        </tr>
-    </thead>
-
-    <tbody>
-
-        <tr>
-            <td><code>PruebasDataNow</code></td>
-            <td>Resource Group</td>
-            <td>East US</td>
-            <td>Contenedor lógico que agrupa todos los recursos de Azure utilizados por la solución para facilitar su administración, monitoreo y eliminación.</td>
-        </tr>
-
-        <tr>
-            <td><code>stpruebasdatanowdev</code></td>
-            <td>Storage Account (ADLS Gen2)</td>
-            <td>East US</td>
-            <td>Repositorio principal del Data Lake donde se almacenan las capas Bronze, Silver y Gold con archivos Parquet generados por el pipeline.</td>
-        </tr>
-
-        <tr>
-            <td><code>adf-pruebasdatanow-dev</code></td>
-            <td>Azure Data Factory V2</td>
-            <td>East US</td>
-            <td>Orquesta la ejecución de los procesos ETL/ELT, coordinando la ingestión y transformación de datos.</td>
-        </tr>
-
-        <tr>
-            <td><code>kv-pruebasdatanow-dev</code></td>
-            <td>Azure Key Vault</td>
-            <td>East US</td>
-            <td>Almacena de forma segura secretos, credenciales y cadenas de conexión utilizadas por los diferentes servicios.</td>
-        </tr>
-
-        <tr>
-            <td><code>log-pruebasdatanow-dev</code></td>
-            <td>Log Analytics Workspace</td>
-            <td>East US</td>
-            <td>Centraliza registros, métricas y diagnósticos para facilitar el monitoreo y la solución de incidentes.</td>
-        </tr>
-
-        <tr>
-            <td><code>ag-pruebasdatanow-dev</code></td>
-            <td>Action Group</td>
-            <td>Global</td>
-            <td>Gestiona el envío de alertas y notificaciones cuando se presentan eventos críticos o fallos en la solución.</td>
-        </tr>
-
-        <tr>
-            <td><code>logitrackjulian2026PruebaDataNow</code></td>
-            <td>Azure SQL Server</td>
-            <td>Central US</td>
-            <td>Servidor lógico que hospeda la base de datos transaccional utilizada como origen de información.</td>
-        </tr>
-
-        <tr>
-            <td><code>LogiTrack_Transaccional</code></td>
-            <td>Azure SQL Database</td>
-            <td>Central US</td>
-            <td>Base de datos OLTP donde se almacenan conductores, envíos, rutas GPS, remitentes, novedades, zonas y demás información operacional.</td>
-        </tr>
-
-    </tbody>
-</table>
+| Recurso | Tipo | Región | Propósito dentro de la solución |
+|----------|------|--------|---------------------------------|
+| **PruebasDataNow** | Resource Group | East US | Contenedor lógico que agrupa todos los recursos de Azure utilizados por la solución para facilitar su administración, monitoreo y eliminación. |
+| **stpruebasdatanowdev** | Storage Account (ADLS Gen2) | East US | Repositorio principal del Data Lake donde se almacenan las capas Bronze, Silver y Gold con archivos Parquet generados por el pipeline. |
+| **adf-pruebasdatanow-dev** | Azure Data Factory V2 | East US | Orquesta la ejecución de los procesos ETL/ELT, coordinando la ingestión y transformación de datos. |
+| **kv-pruebasdatanow-dev** | Azure Key Vault | East US | Almacena de forma segura secretos, credenciales y cadenas de conexión utilizadas por los diferentes servicios. |
+| **log-pruebasdatanow-dev** | Log Analytics Workspace | East US | Centraliza registros, métricas y diagnósticos para facilitar el monitoreo y la solución de incidentes. |
+| **ag-pruebasdatanow-dev** | Action Group | Global | Gestiona el envío de alertas y notificaciones cuando se presentan eventos críticos o fallos en la solución. |
+| **logitrackjulian2026PruebaDataNow** | Azure SQL Server | Central US | Servidor lógico que hospeda la base de datos transaccional utilizada como origen de información. |
+| **LogiTrack_Transaccional** | Azure SQL Database | Central US | Base de datos OLTP donde se almacenan conductores, envíos, rutas GPS, remitentes, novedades, zonas y demás información operacional. |
 <hr>
 
 <h2>🏅 4. Entregable Fase 3: Pipeline End-to-End (Arquitectura Medallón)</h2>
