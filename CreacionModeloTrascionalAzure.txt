@@ -1,0 +1,172 @@
+/*################################################################################################################################################################################################
+  ################################################################################################################################################################################################
+  ##############################################                 CREACION DE MODELO DE DATOS TRANSACCIONAL EN AZURE                  #############################################################
+  ################################################################################################################################################################################################
+  ################################################################################################################################################################################################
+*/
+
+        ------------------------------        01. Registra Sql server que es el motor de base de datos elegido para la base de datos transaccional          ------------------------------
+
+az provider register --namespace Microsoft.Sql
+
+        -------------------------------    02. Crear Servidor (por restriccion de la cueta se crea en esa locacion centralus el servidor )   ------------------------------------------
+
+az sql server create --resource-group PruebasDataNow `
+    --name logitrackjulian2026PruebaDataNow `
+    --location centralus `
+    --admin-user rootadmin `
+    --admin-password "admin123*"
+
+        -------------------------------------------------------    03. Crear Base de datos Transaccional      ---------------------------------------------------------------------
+
+az sql db create `
+    --resource-group PruebasDataNow `
+    --server logitrackjulian2026PruebaDataNow `
+    --name LogiTrack_Transaccional `
+    --service-objective Basic
+
+
+    -------------------------------   (para crear la tablas debe primer configurar el firewall en el azure agregando la ip v4 para poder ejecutar este sql desde el host donde va a ejecutar las sentecias) ----------------------------------
+
+az sql server firewall-rule create `
+  --resource-group PruebasDataNow `
+  --server logitrackjulian2026pruebadatanow `
+  --name HostAdminBdTransaccional `
+  --start-ip-address 181.51.32.95 `
+  --end-ip-address 181.51.32.95
+
+      ---------------------------------------------------        03_01. Crear Objeto de datos OPE_CONDUCTORES     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "CREATE TABLE OPE_CONDUCTORES (cond_id INT IDENTITY(1,1) PRIMARY KEY, nomb_cond VARCHAR(100) NOT NULL, apell_cond VARCHAR(100) NOT NULL, tip_doc CHAR(3) NOT NULL, num_doc_hash VARCHAR(255) NOT NULL, fec_ingreso DATE NOT NULL, id_ciudad_base INT NOT NULL, tip_vehiculo VARCHAR(20) NOT NULL, cod_zona_asignada INT NOT NULL, activo BIT NOT NULL DEFAULT 1, calific_promedio_acum DECIMAL(3,2));"
+
+      ---------------------------------------------------        03_02. Crear Objeto de datos CLI_REMITENTES     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "CREATE TABLE CLI_REMITENTES (id_remitente INT IDENTITY(1,1) NOT NULL PRIMARY KEY,razon_social VARCHAR(150) NOT NULL,tipo_cliente VARCHAR(30) NOT NULL,ciudad_principal VARCHAR(100) NOT NULL,sla_entrega_horas INT NOT NULL,penalidad_porc DECIMAL(5,2) NOT NULL,activo BIT NOT NULL DEFAULT 1);"
+
+
+     ---------------------------------------------------        03_03. Crear Objeto de datos TMS_ENVIOS     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "CREATE TABLE TMS_ENVIOS (id_envio BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY, id_remitente INT NOT NULL,cond_id INT NOT NULL,id_zona_destino INT NOT NULL,tip_paquete VARCHAR(30) NOT NULL,peso_kg DECIMAL(8,2) NOT NULL,fec_recepcion DATE NOT NULL,hra_recepcion TIME NOT NULL,fec_entrega_programada DATETIME NOT NULL,fec_intento1 DATE NULL,hra_intento1 TIME NULL,resultado_intento1 VARCHAR(30) NULL,fec_intento2 DATE NULL,hra_intento2 TIME NULL,resultado_intento2 VARCHAR(30) NULL,fec_entrega_real DATETIME NULL,estado_final VARCHAR(30) NOT NULL,motivo_fallo_cod VARCHAR(10) NULL,vr_declarado DECIMAL(12,2) NOT NULL);"
+
+
+    ---------------------------------------------------        03_04. Crear Objeto de datos GPS_RUTAS     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "CREATE TABLE GPS_RUTAS ( id_ruta BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY, cond_id INT NOT NULL, fec_ruta DATE NOT NULL, hra_inicio TIME NOT NULL, hra_fin TIME NOT NULL, km_recorridos DECIMAL(10,2) NOT NULL, num_paradas_plan INT NOT NULL, num_paradas_real INT NOT NULL, desviacion_ruta_km DECIMAL(10,2) NOT NULL, consumo_combustible DECIMAL(10,2) NOT NULL);"
+
+    ---------------------------------------------------        03_05. Crear Objeto de datos CAL_DESTINATARIOS     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "CREATE TABLE CAL_DESTINATARIOS (id_calificacion BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY,id_envio BIGINT NOT NULL,fec_calificacion DATETIME2 NOT NULL,puntaje_1_5 TINYINT NOT NULL,comentario_texto VARCHAR(1000) NULL,canal_calificacion VARCHAR(30) NOT NULL);"
+
+    ---------------------------------------------------        03_06. Crear Objeto de datos DIR_NOVEDADES     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "CREATE TABLE DIR_NOVEDADES (id_novedad BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY,id_envio BIGINT NOT NULL,fec_novedad DATETIME2 NOT NULL,tip_novedad VARCHAR(50) NOT NULL,desc_novedad VARCHAR(1000) NULL,id_agente_registro INT NOT NULL,requiere_accion BIT NOT NULL DEFAULT 0);"
+
+    ---------------------------------------------------        03_07. Crear Objeto de datos GEO_ZONAS     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "CREATE TABLE GEO_ZONAS (id_zona INT IDENTITY(1,1) NOT NULL PRIMARY KEY,nom_zona VARCHAR(100) NOT NULL,id_ciudad INT NOT NULL,barrio_referencia VARCHAR(150) NOT NULL,latitud_centroide DECIMAL(10,8) NOT NULL,longitud_centroide DECIMAL(11,8) NOT NULL,nivel_trafico_prom TINYINT NOT NULL,tip_zona VARCHAR(30) NOT NULL,distancia_bodega_km DECIMAL(8,2) NOT NULL);"
+
+    ---------------------------------------------------        Crear Objeto de datos CIUDADES se guarda las ciudades (Bogotá, Cali, Barranquilla, Medellin, Bucaramanga, Pereira, Manizales, Cartagena, Santa Marta y Cucuta)     -----------------------------------------------------------------
+
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "CREATE TABLE CIUDADES( id_ciudad INT PRIMARY KEY, nombre_ciudad VARCHAR(100), departamento VARCHAR(100));"
+
+ 
+    ---------------------------------------------------        Crear Fk TMS_ENVIOS a FK_TMS_REMITENTE     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "ALTER TABLE TMS_ENVIOS ADD CONSTRAINT FK_TMS_REMITENTE FOREIGN KEY (id_remitente) REFERENCES CLI_REMITENTES(id_remitente);"
+
+
+    ---------------------------------------------------        Crear Fk TMS_ENVIOS a OPE_CONDUCTORES     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "ALTER TABLE TMS_ENVIOS ADD CONSTRAINT FK_TMS_CONDUCTOR FOREIGN KEY (cond_id) REFERENCES OPE_CONDUCTORES(cond_id);"
+
+    ---------------------------------------------------        Crear Fk TMS_ENVIOS a GEO_ZONAS     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "ALTER TABLE TMS_ENVIOS ADD CONSTRAINT FK_TMS_ZONA FOREIGN KEY (id_zona_destino) REFERENCES GEO_ZONAS(id_zona);"
+
+
+    ---------------------------------------------------        Crear Fk GPS_RUTAS a OPE_CONDUCTORES     -----------------------------------------------------------------
+
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "ALTER TABLE GPS_RUTAS ADD CONSTRAINT FK_GPS_CONDUCTOR FOREIGN KEY (cond_id) REFERENCES OPE_CONDUCTORES(cond_id);"
+
+    ---------------------------------------------------        Crear Fk CAL_DESTINATARIOS → TMS_ENVIOS     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "ALTER TABLE CAL_DESTINATARIOS ADD CONSTRAINT FK_CAL_ENVIO FOREIGN KEY (id_envio) REFERENCES TMS_ENVIOS(id_envio);"         
+
+    ---------------------------------------------------        Crear Fk DIR_NOVEDADES → TMS_ENVIOS     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "ALTER TABLE DIR_NOVEDADES ADD CONSTRAINT FK_NOVEDAD_ENVIO FOREIGN KEY (id_envio) REFERENCES TMS_ENVIOS(id_envio);"      
+
+    ---------------------------------------------------        Crear Fk GEO_ZONAS a CIUDADES     -----------------------------------------------------------------
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "ALTER TABLE GEO_ZONAS ADD CONSTRAINT FK_GEO_CIUDAD FOREIGN KEY (id_ciudad) REFERENCES CIUDADES(id_ciudad);"   
+
+    ---------------------------------------------------        Mostrar Fk Creadas     -----------------------------------------------------------------
+
+
+sqlcmd -S logitrackjulian2026pruebadatanow.database.windows.net `
+       -d LogiTrack_Transaccional `
+       -U rootadmin `
+       -P "admin123*" `
+       -Q "SELECT fk.name AS ForeignKey,tp.name AS TablaPadre,cp.name AS ColumnaPadre,tr.name AS TablaReferenciada,cr.name AS ColumnaReferenciada FROM sys.foreign_keys fk INNER JOIN sys.foreign_key_columns fkc ON fk.object_id = fkc.constraint_object_id INNER JOIN sys.tables tp ON fkc.parent_object_id = tp.object_id INNER JOIN sys.columns cp ON fkc.parent_object_id = cp.object_id AND fkc.parent_column_id = cp.column_id INNER JOIN sys.tables tr ON fkc.referenced_object_id = tr.object_id INNER JOIN sys.columns cr ON fkc.referenced_object_id = cr.object_id AND fkc.referenced_column_id = cr.column_id ORDER BY tp.name;"
