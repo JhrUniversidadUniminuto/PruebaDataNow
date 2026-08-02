@@ -245,9 +245,7 @@ Se evidencia localmente ejecutándose el Azure Cli y el portal web de Azure.
 
 <hr>
 
-<pre><code>
-generation_parameters:
-</code></pre>
+<h2>🏗️ 2. Entregable Fase 1: ENTREGABLE FASE 1 — GENERACION DE DATOS Y MODELO RELACIONAL</h2>
 
 <h3>2.1 Script de generación de datos dummy</h3>
 
@@ -272,6 +270,11 @@ El código fuente de la generación de datos sintéticos se encuentra en el sigu
     <strong>Generadores de datos:</strong>
     <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/tree/main/generators">Carpeta generators</a>
   </li>
+  <li>
+    <strong>Evidencia Desencadenador datos sintéticos por perspectiva:</strong>
+    <img src="img/DesencadenadorDatosSinteticos.png" width="450">
+  </li>
+    
 </ul>
 
 <h3>2.2 Relaciones Clave del Modelo Entidad-Relación (ER)</h3>
