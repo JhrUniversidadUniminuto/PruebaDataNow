@@ -282,7 +282,7 @@ El código fuente de la generación de datos sintéticos se encuentra en el sigu
 <h3>2.2 Script SQL o Python de carga en la base de datos relacional seleccionada</h3>
   <li>
     <strong>Script creacion de modelo de datos transaccional:</strong>
-    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/tree/main/CreacionModeloTrascionalAzure.txt">Carpeta generators</a>
+    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/tree/main/CreacionModeloTrascionalAzure.txt">Script</a>
   </li>
 
 <hr>
