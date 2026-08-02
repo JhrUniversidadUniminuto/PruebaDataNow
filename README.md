@@ -285,6 +285,12 @@ El código fuente de la generación de datos sintéticos se encuentra en el sigu
     <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/tree/main/CreacionModeloTrascionalAzure.txt">Script</a>
   </li>
 
+<h3>2.2 Script SQL o Python de carga en la base de datos relacional seleccionada</h3>
+  <li>
+    <strong>Diagrama Entidad-Relación (ER) de todas las tablas generadas, ubicado en la carpeta /docs del repositorio</strong>
+    <img src="img/Er.png" width="450">
+  </li>
+
 <hr>
 
 <h2>🏗️ 3. Entregable Fase 2: Infraestructura como Código (IaC)</h2>
