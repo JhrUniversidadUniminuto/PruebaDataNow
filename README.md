@@ -391,59 +391,22 @@ Nótese que el archivo "conexiones.py", tiene las cadenas de conexión usando ma
 </ul>
 <hr>
 
-<h2>🏅 4. Entregable Fase 3: Pipeline End-to-End (Arquitectura Medallón)</h2>
+<h2>🏅 4. ENTREGABLE FASE 3 - PIPELINE END TO END FLUJO DE DATOS: ARQUITECTURA MEDALLION</h2>
 
-<h3>4.1 Capas del Pipeline</h3>
+<h3>4.1 Código completo de las tres capas del pipeline en la carpeta /pipelines del repositorio</h3>
+<p>
+Esta es la carpeta /pipelines dispuesta para la solución.
+</p>
 <ul>
-    <li><strong>Capa Bronze (<code>01_bronze_ingestion.py</code>):</strong> Ingesta cruda incremental en Parquet/Delta con metadatos de auditoría (<code>_ingestion_timestamp</code>, <code>_source_system</code>, <code>_batch_id</code>) y particionamiento por fecha (<code>año/mes/día</code>).</li>
-    <li><strong>Capa Silver (<code>02_silver_transformation.py</code>):</strong> Limpieza de nulos corrompidos, eliminación de duplicados, deduplicación y enmascaramiento con <strong>Hash SHA-256</strong> para PII (<code>num_doc_hash</code>). Los registros erróneos se canalizan a <code>silver_error_records</code>[cite: 1].</li>
-    <li><strong>Capa Gold (<code>03_gold_transformation.py</code>):</strong> Construcción del modelo en estrella (Star Schema) aplicando reglas de negocio.</li>
+  <li>
+    <strong>/pipelines:</strong>
+    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/infra/pipelines">Ver</a>
+  </li>
+  <li>
+    <strong>parametros.py:</strong>
+    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/parametros.py">Ver</a>
+  </li>  
 </ul>
-
-<h3>4.2 Documentación de Linaje de Datos (Data Lineage)</h3>
-<table border="1" cellspacing="0" cellpadding="5">
-    <thead>
-        <tr>
-            <th>Campo Calculado (Gold)</th>
-            <th>Tabla Destino</th>
-            <th>Tabla(s) Origen (Silver)</th>
-            <th>Transformación / Regla de Negocio Aplicada</th>
-            <th>Propósito Analítico</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong><code>score_desempeno</code></strong></td>
-            <td><code>fact_desempeno_conductor</code></td>
-            <td><code>tms_envios</code><br><code>gps_rutas</code><br><code>cal_destinatarios</code></td>
-            <td>Promedio ponderado normalizado (0.0 a 1.0):<br><code>(tasa_exito * 0.35) + (adherencia_ruta * 0.20) + (velocidad_norm * 0.20) + (inversa_intentos * 0.15) + (calific_norm * 0.10)</code>[cite: 1]</td>
-            <td>Asignación justa de bonos basada en desempeño multidimensional[cite: 1].</td>
-        </tr>
-        <tr>
-            <td><strong><code>clasificacion_retraso</code></strong></td>
-            <td><code>fact_envios</code></td>
-            <td><code>tms_envios</code></td>
-            <td>Diferencia en horas entre <code>fec_entrega_real</code> y <code>fec_entrega_programada</code>[cite: 1].<br>• <code>&lt;=0h</code>: A tiempo<br>• <code>1-4h</code>: Retraso leve<br>• <code>4-24h</code>: Retraso moderado<br>• <code>&gt;24h</code>: Retraso crítico[cite: 1]</td>
-            <td>Cuantificar penalizaciones de SLA e identificar cuellos de botella[cite: 1].</td>
-        </tr>
-        <tr>
-            <td><strong><code>alerta_desviacion</code></strong></td>
-            <td><code>fact_alertas_zona</code></td>
-            <td><code>tms_envios</code><br><code>geo_zonas</code></td>
-            <td>Compara la tasa de fallo actual vs el promedio de las últimas 4 semanas. Se activa si supera en <strong>&gt;25%</strong> la media histórica[cite: 1].</td>
-            <td>Distinguir fallos estructurales de la zona vs fallos del conductor[cite: 1].</td>
-        </tr>
-    </tbody>
-</table>
-
-<h3>4.3 Pruebas Automatizadas de Calidad de Datos</h3>
-<ol>
-    <li><strong>Integridad Referencial:</strong> Claves primarias no nulas en <code>fact_envios</code>.</li>
-    <li><strong>Unicidad:</strong> Cero registros duplicados en <code>dim_conductores</code>.</li>
-    <li><strong>Anonimización PII:</strong> Formato Hash SHA-256 validado en <code>num_doc_hash</code>.</li>
-    <li><strong>Rangos Válidos:</strong> <code>score_desempeno</code> restringido estrictamente entre <code>0.0</code> y <code>1.0</code>[cite: 1].</li>
-    <li><strong>No Vacío:</strong> Verificación de registros poblados en <code>kpi_executive_dashboard</code>.</li>
-</ol>
 
 <hr>
 
