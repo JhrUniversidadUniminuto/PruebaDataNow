@@ -362,9 +362,6 @@ La siguiente tabla resume los recursos desplegados en Microsoft Azure mediante I
 </p>
 
 <br>
-<p align="center">
-<img src="img/RecursosCreadosAzure.png" width="900">
-</p>
 
 | Recurso | Tipo | Región | Propósito dentro de la solución |
 |----------|------|--------|---------------------------------|
