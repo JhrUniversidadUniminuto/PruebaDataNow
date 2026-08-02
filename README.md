@@ -386,7 +386,7 @@ Nótese que el archivo "conexiones.py", tiene las cadenas de conexión usando ma
   </li>
   <li>
     <strong>parametros.py:</strong>
-    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/parametros.py>Ver</a>
+    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/parametros.py">Ver</a>
   </li>  
 </ul>
 <hr>
