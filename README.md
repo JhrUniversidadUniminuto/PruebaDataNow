@@ -279,16 +279,11 @@ El código fuente de la generación de datos sintéticos se encuentra en el sigu
     
 </ul>
 
-<h3>2.2 Relaciones Clave del Modelo Entidad-Relación (ER)</h3>
-<p>Ubicación del diagrama: <code>/docs/diagrama_er.png</code></p>
-<ul>
-    <li><code>TMS_ENVIOS.id_remitente</code> ➡️ <code>CLI_REMITENTES.id_remitente</code></li>
-    <li><code>TMS_ENVIOS.cond_id</code> ➡️ <code>OPE_CONDUCTORES.cond_id</code></li>
-    <li><code>TMS_ENVIOS.id_zona_destino</code> ➡️ <code>GEO_ZONAS.id_zona</code></li>
-    <li><code>GPS_RUTAS.cond_id</code> ➡️ <code>OPE_CONDUCTORES.cond_id</code></li>
-    <li><code>CAL_DESTINATARIOS.id_envio</code> ➡️ <code>TMS_ENVIOS.id_envio</code></li>
-    <li><code>DIR_NOVEDADES.id_envio</code> ➡️ <code>TMS_ENVIOS.id_envio</code></li>
-</ul>
+<h3>2.2 Script SQL o Python de carga en la base de datos relacional seleccionada</h3>
+  <li>
+    <strong>Script creacion de modelo de datos transaccional:</strong>
+    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/tree/main/CreacionModeloTrascionalAzure.txt">Carpeta generators</a>
+  </li>
 
 <hr>
 
