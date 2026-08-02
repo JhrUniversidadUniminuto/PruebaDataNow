@@ -1,0 +1,50 @@
+/*############################################################################################################################################################*/
+/*                                            Creación e ingesta de modelo Bronze, Silñver y Gold                                                             */
+/*############################################################################################################################################################*/
+
+
+
+        /*-------------------------------------------------------------------------------------------------------------------------------------*/
+        /*                            CREACION DE TAREA DE ALMACENAMIENTO                                                                      */
+        /*-------------------------------------------------------------------------------------------------------------------------------------*/
+
+* Crear infraestructura
+	** Crear carpeta infra en carpeta local de la prueba
+
+
+
+
+		# 1. Crear la carpeta infra dentro de C:\DataNow
+			mkdir infra
+
+		# 2. Entrar a la nueva carpeta
+			cd infra
+
+		# 3. Crear los archivos vacíos de Terraform
+			New-Item main.tf, variables.tf, outputs.tf, providers.tf, terraform.tfvars, README.md
+
+* Instalar Terraform localemente
+
+winget install HashiCorp.Terraform
+
+* Crear Variable entorno para AZURE_STORAGE_KEY en Bronze
+
+$env:AZURE_STORAGE_KEY="Tf1lT6Sm96gc1MPBxrFMwsRj9HySpnPOFg8J4UgBhwBItypfo3NrzUm0fb2DAsQBO1asswSwHXEG+AStV3I8uQ=="
+
+* Crear 
+
+$env:SQL_SERVER="logitrackjulian2026pruebadatanow.database.windows.net"
+$env:SQL_DB="LogiTrack_Transaccional"
+$env:SQL_USER="rootadmin"
+$env:SQL_PASSWORD="admin123*"
+
+* Instalar paquete pyspark
+
+pip install pyspark==3.5.1 delta-spark==3.2.0
+
+* Configuracion hadoop y variables de entorno
+
+New-Item -Path "C:\hadoop\bin" -ItemType Directory -Force
+Invoke-WebRequest -Uri "https://github.com/cdarlint/winutils/raw/master/hadoop-3.2.0/bin/winutils.exe" -OutFile "C:\hadoop\bin\winutils.exe"
+$env:HADOOP_HOME="C:\hadoop"
+$env:Path += ";C:\hadoop\bin"
