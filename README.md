@@ -249,21 +249,7 @@ Se evidencia localmente ejecutándose el Azure Cli y el portal web de Azure.
 
 <h3>2.1 Configuración de Generación (<code>data-generation/config.yaml</code>)</h3>
 <pre><code>generation_parameters:
-  seed: 42
-  date_range:
-    start_date: "2025-01-01"
-    end_date: "2025-12-31"
-  tables:
-    OPE_CONDUCTORES: 500
-    CLI_REMITENTES: 200
-    GEO_ZONAS: 300
-    TMS_ENVIOS: 2000000
-    GPS_RUTAS: 100000
-    CAL_DESTINATARIOS: 300000
-    DIR_NOVEDADES: 150000
-  anomalies:
-    duplicate_rate: 0.01
-    null_rate: 0.05
+
 </code></pre>
 
 <h3>2.2 Relaciones Clave del Modelo Entidad-Relación (ER)</h3>
