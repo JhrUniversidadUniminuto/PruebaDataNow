@@ -1,0 +1,52 @@
+__pycache__/
+*.pyc
+
+.env
+
+.vscode/
+
+.idea/
+
+*.log
+
+*.bak
+
+*.tmp
+
+*.db
+
+*.sqlite
+
+*.csv
+
+*.parquet
+
+*.delta
+
+*.zip
+
+*.rar
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+*.tfvars
+# Python
+__pycache__/
+*.pyc
+
+# Entornos
+.venv/
+venv/
+
+
+infra/*.tfstate
+infra/*.tfstate.*
+infra/*.tfvars
+infra/.terraform.lock.hcl
+Complementos/
+
+# Configuración sensible
+.env

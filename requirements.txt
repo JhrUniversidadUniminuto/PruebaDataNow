@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 faker
 pyodbc
 python-dotenv
+=======
+faker
+pyodbc
+python-dotenv
+>>>>>>> 3c4ec18e169912208c2f45799530f1204e0d0d43
 tqdm
