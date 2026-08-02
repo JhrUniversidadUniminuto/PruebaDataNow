@@ -334,7 +334,7 @@ README:
 <ul>
   <li>
     <strong>Configuiración:</strong>
-    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/03CREACIONMODELObroncesilvergold.txt">main.py</a>
+    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/03CREACIONMODELObroncesilvergold.txt">Leerme</a>
   </li>
     
 </ul>
