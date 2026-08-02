@@ -255,31 +255,23 @@ El código fuente de la generación de datos sintéticos se encuentra en el sigu
 
 <ul>
     <li>
-        <strong>Pipeline principal:</strong>
-        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/main.py">
-            main.py
-        </a>
+    <strong>Pipeline principal:</strong>
+    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/main.py">main.py</a>
     </li>
-
+    
     <li>
         <strong>Orquestación:</strong>
-        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/pipeline.py">
-            pipeline.py
-        </a>
+        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/pipeline.py">pipeline.py</a>
     </li>
-
+    
     <li>
         <strong>Configuración (semilla aleatoria y parámetros):</strong>
-        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/parametros.py">
-            config/parametros.py
-        </a>
+        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/parametros.py">config/parametros.py</a>
     </li>
-
+    
     <li>
         <strong>Generadores de datos:</strong>
-        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/tree/main/generators">
-            Carpeta generators
-        </a>
+        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/tree/main/generators">Carpeta generators</a>
     </li>
 </ul>
 
