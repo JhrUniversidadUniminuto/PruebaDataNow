@@ -290,10 +290,7 @@ El código fuente de la generación de datos sintéticos se encuentra en el sigu
 <h2>🏗️ 3. Entregable Fase 2: Infraestructura como Código (IaC)</h2>
 <p>Aprovisionamiento modular con <strong>Terraform</strong> en <code>/infra</code>:</p>
 <ul>
-    <li><code>azurerm_resource_group</code>: Grupo de recursos principal <code>rg-datanow-prod</code>.</li>
-    <li><code>azurerm_storage_account</code>: ADLS Gen2 habilitado con contenedores <code>bronze</code>, <code>silver</code> y <code>gold</code>.</li>
-    <li><code>azurerm_key_vault</code>: Almacenamiento seguro de credenciales sin claves expuestas.</li>
-    <li><code>azurerm_log_analytics_workspace</code>: Trazabilidad y monitoreo centralizado.</li>
+    <img src="img/Er.png" width="450">
 </ul>
 
 <hr>
