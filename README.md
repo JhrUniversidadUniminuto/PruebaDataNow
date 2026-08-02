@@ -270,6 +270,8 @@ El código fuente de la generación de datos sintéticos se encuentra en el sigu
     <strong>Generadores de datos:</strong>
     <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/tree/main/generators">Carpeta generators</a>
   </li>
+  <br>
+  <br>
   <li>
     <strong>Evidencia Desencadenador datos sintéticos por perspectiva:</strong>
     <img src="img/DesencadenadorDatosSinteticos.png" width="450">
