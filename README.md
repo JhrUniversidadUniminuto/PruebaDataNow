@@ -453,6 +453,16 @@ Se realiza la orquestación del proceso por medio de un menú de opciones.
 </ul>
 <h3>5.2 Captura de pantalla del DAG ejecutado exitosamente con el estado de cada tarea visible </h3>
 <p>
+Mensaje de exito.
+</p>
+<ul>
+  <li>
+    <strong>opciones:</strong>
+      <img src="img/CargaCorrecta.png" width="450">
+  </li>
+</ul>
+<h3>5.3 Evidencia de la alerta de fallo: captura del correo o mensaje recibido ante una ejecución fallida de prueba </h3>
+<p>
 Mensaje de error en caso de fallo.
 </p>
 <ul>
@@ -460,9 +470,6 @@ Mensaje de error en caso de fallo.
     <strong>opciones:</strong>
       <img src="img/Errorseleccion.png" width="450">
   </li>
-  
-    
-   
 </ul>
 <hr>
 
