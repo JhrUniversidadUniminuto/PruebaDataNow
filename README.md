@@ -447,10 +447,9 @@ Se realiza la orquestación del proceso por medio de un menú de opciones.
 <ul>
   <li>
     <strong>opciones:</strong>
+      <img src="img/Orquestador.png" width="450">
   </li>
-  <li>
-    <img src="img/Orquestador.png" width="450">
-  </li>  
+
 </ul>
 <h3>5.2 Captura de pantalla del DAG ejecutado exitosamente con el estado de cada tarea visible </h3>
 <p>
@@ -459,10 +458,11 @@ Mensaje de error en caso de fallo.
 <ul>
   <li>
     <strong>opciones:</strong>
+      <img src="img/Errorseleccion.png" width="450">
   </li>
-  <li>
-    <img src="img/Errorseleccion.png" width="450">
-  </li>  
+  
+    
+   
 </ul>
 <hr>
 
