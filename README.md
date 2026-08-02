@@ -447,7 +447,6 @@ Se realiza la orquestación del proceso por medio de un menú de opciones.
 <ul>
   <li>
     <strong>opciones:</strong>
-    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/infra/pipelines">Ver</a>
   </li>
   <li>
     <strong>parametros.py:</strong>
