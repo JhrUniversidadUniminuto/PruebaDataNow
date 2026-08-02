@@ -439,17 +439,25 @@ Este fue el mensaje que se obtiene de la pruebas
 </ul>
 <hr>
 
-<h2>⚙️ 5. Entregable Fase 4: Orquestación del Pipeline</h2>
+<h2>⚙️ 5. ENTREGABLE FASE 4 — ORQUESTACION DEL PIPELINE </h2>
+<h3>5.1 Definición del DAG o pipeline principal en la carpeta /orchestration del repositorio</h3>
+<p>
+Se realiza la orquestación del proceso por medio de un menú de opciones.
+</p>
 <ul>
-    <li><strong>DAG de Orquestación:</strong> <code>orchestration/dag_datanow_pipeline.py</code>.</li>
-    <li><strong>Programación (CRON):</strong> Diaria a las <strong>02:00 AM</strong> local (<code>0 2 * * *</code>).</li>
-    <li><strong>Política de Reintentos:</strong> 3 reintentos automáticos con intervalo de <strong>Backoff Exponencial</strong>.</li>
-    <li><strong>Alertas y Notificaciones:</strong> Correos automatizados ante fallo de tarea (<code>on_failure_callback</code>) y reporte consolidado diario ante éxito.</li>
+  <li>
+    <strong>opciones:</strong>
+    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/infra/pipelines">Ver</a>
+  </li>
+  <li>
+    <strong>parametros.py:</strong>
+    <img src="img/Orquestador.png" width="450">
+  </li>  
 </ul>
 
 <hr>
 
-<h2>🔐 6. Entregable Fase 5: Gobierno, Seguridad y Calidad de Datos</h2>
+<h2>🔐 6. ENTREGABLE FASE 4 — ORQUESTACION DEL PIPELINE </h2>
 
 <h3>6.1 Matriz de Roles y Accesos (RBAC)</h3>
 <table border="1" cellspacing="0" cellpadding="5">
