@@ -245,33 +245,39 @@ Se evidencia localmente ejecutándose el Azure Cli y el portal web de Azure.
 
 <hr>
 
-<h2>🎲 2. Entregable Fase 1: Generación de Datos y Modelo Relacional</h2>
+<pre><code>
+generation_parameters:
+</code></pre>
 
 <h3>2.1 Script de generación de datos dummy</h3>
 
-<p>
-El código fuente de la generación de datos sintéticos se encuentra en el siguiente repositorio:
-</p>
-
 <ul>
     <li>
-    <strong>Pipeline principal:</strong>
-    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/main.py">main.py</a>
+        <strong>Pipeline principal:</strong>
+        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/main.py">
+            main.py
+        </a>
     </li>
-    
+
     <li>
         <strong>Orquestación:</strong>
-        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/pipeline.py">pipeline.py</a>
+        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/pipeline.py">
+            pipeline.py
+        </a>
     </li>
-    
+
     <li>
         <strong>Configuración (semilla aleatoria y parámetros):</strong>
-        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/parametros.py">config/parametros.py</a>
+        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/parametros.py">
+            config/parametros.py
+        </a>
     </li>
-    
+
     <li>
         <strong>Generadores de datos:</strong>
-        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/tree/main/generators">Carpeta generators</a>
+        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/tree/main/generators">
+            Carpeta generators
+        </a>
     </li>
 </ul>
 
