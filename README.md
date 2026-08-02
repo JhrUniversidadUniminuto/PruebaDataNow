@@ -453,7 +453,19 @@ Se realiza la orquestación del proceso por medio de un menú de opciones.
     <img src="img/Orquestador.png" width="450">
   </li>  
 </ul>
-
+<h3>5.2 Captura de pantalla del DAG ejecutado exitosamente con el estado de cada tarea visible </h3>
+<p>
+Mensaje de error en caso de fallo.
+</p>
+<ul>
+  <li>
+    <strong>opciones:</strong>
+  </li>
+  <li>
+    <strong>parametros.py:</strong>
+    <img src="img/Errorseleccion.png" width="450">
+  </li>  
+</ul>
 <hr>
 
 <h2>🔐 6. ENTREGABLE FASE 4 — ORQUESTACION DEL PIPELINE </h2>
