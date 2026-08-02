@@ -427,6 +427,16 @@ Este fue el mensaje que se obtiene de la capa gold
     <img src="img/CargaExitozaGold.png" width="450">
   </li>
 </ul>
+<h3>4.4 Resultados de las cinco pruebas de calidad de datos con el reporte de aprobación o fallo </h3>
+<p>
+Este fue el mensaje que se obtiene de la pruebas
+</p>
+<ul>
+  <li>
+    <strong>Resultado:</strong>
+    <img src="img/5PruebasAporobadas.png" width="450">
+  </li>
+</ul>
 <hr>
 
 <h2>⚙️ 5. Entregable Fase 4: Orquestación del Pipeline</h2>
