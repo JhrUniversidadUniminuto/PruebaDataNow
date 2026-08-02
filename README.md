@@ -373,6 +373,19 @@ La siguiente tabla resume los recursos desplegados en Microsoft Azure mediante I
 | **ag-pruebasdatanow-dev** | Action Group | Global | Gestiona el envío de alertas y notificaciones cuando se presentan eventos críticos o fallos en la solución. |
 | **logitrackjulian2026PruebaDataNow** | Azure SQL Server | Central US | Servidor lógico que hospeda la base de datos transaccional utilizada como origen de información. |
 | **LogiTrack_Transaccional** | Azure SQL Database | Central US | Base de datos OLTP donde se almacenan conductores, envíos, rutas GPS, remitentes, novedades, zonas y demás información operacional. |
+<br>
+<br>
+<h3>3.4 Archivo de variables o parámetros separado del código principal, sin credenciales expuestas</h3>
+<p>
+Nótese que el archivo "conexiones.py", tiene las cadenas de conexión usando mascaras de los parámetros
+</p>
+<ul>
+  <li>
+    <strong>conexion.py:</strong>
+    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/conexion.py">Ver</a>
+  </li>
+    
+</ul>
 <hr>
 
 <h2>🏅 4. Entregable Fase 3: Pipeline End-to-End (Arquitectura Medallón)</h2>
