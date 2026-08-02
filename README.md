@@ -247,10 +247,37 @@ Se evidencia localmente ejecutándose el Azure Cli y el portal web de Azure.
 
 <h2>🎲 2. Entregable Fase 1: Generación de Datos y Modelo Relacional</h2>
 
-<h3>2.1 Configuración de Generación (<code>data-generation/config.yaml</code>)</h3>
-<pre><code>generation_parameters:
+<h3>2.1 Script de generación de datos dummy</h3>
 
-</code></pre>
+<ul>
+    <li>
+        <strong>Pipeline principal:</strong>
+        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/main.py" target="_blank">
+        main.py
+        </a>
+    </li>
+
+    <li>
+        <strong>Orquestación:</strong>
+        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/pipeline.py" target="_blank">
+        pipeline.py
+        </a>
+    </li>
+
+    <li>
+        <strong>Configuración (semilla y parámetros):</strong>
+        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/parametros.py" target="_blank">
+        config/parametros.py
+        </a>
+    </li>
+
+    <li>
+        <strong>Generadores:</strong>
+        <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/tree/main/generators" target="_blank">
+        Carpeta generators
+        </a>
+    </li>
+</ul>
 
 <h3>2.2 Relaciones Clave del Modelo Entidad-Relación (ER)</h3>
 <p>Ubicación del diagrama: <code>/docs/diagrama_er.png</code></p>
