@@ -326,34 +326,15 @@ El código fuente de la generación de datos sintéticos se encuentra en el sigu
 <hr>
 
 <h2>🏗️ 3. ENTREGABLE FASE 2 — INFRAESTRUCTURA COMO CODIGO</h2>
-<h3>2.1 Script de generación de datos dummy</h3>
+<h3>3.1 Código IaC completo en la carpeta /infra del repositorio, con README de instrucciones de despliegue</h3>
 
 <p>
-El código fuente de la generación de datos sintéticos se encuentra en el siguiente repositorio:
+README:
 </p>
-
 <ul>
   <li>
-    <strong>Pipeline principal:</strong>
-    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/main.py">main.py</a>
-  </li>
-  <li>
-    <strong>Orquestación:</strong>
-    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/pipeline.py">pipeline.py</a>
-  </li>
-  <li>
-    <strong>Configuración (semilla aleatoria y parámetros):</strong>
-    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/parametros.py">config/parametros.py</a>
-  </li>
-  <li>
-    <strong>Generadores de datos:</strong>
-    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/tree/main/generators">Carpeta generators</a>
-  </li>
-  <br>
-  <br>
-  <li>
-    <strong>Evidencia Desencadenador datos sintéticos por perspectiva:</strong>
-    <img src="img/DesencadenadorDatosSinteticos.png" width="450">
+    <strong>Configuiración:</strong>
+    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/03CREACIONMODELObroncesilvergold.txt">main.py</a>
   </li>
     
 </ul>
