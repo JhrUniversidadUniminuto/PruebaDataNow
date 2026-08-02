@@ -417,6 +417,16 @@ Este fue el mensaje que se obtiene de la capa silver.
     <img src="img/CargaExitozaSilver.png" width="450">
   </li>
 </ul>
+<h3>4.3 Al menos tres tablas o vistas de agregación en la capa Gold con sus definiciones documentadas</h3>
+<p>
+Este fue el mensaje que se obtiene de la capa gold
+</p>
+<ul>
+  <li>
+    <strong>Resultado:</strong>
+    <img src="img/CargaExitozaGold.png" width="450">
+  </li>
+</ul>
 <hr>
 
 <h2>⚙️ 5. Entregable Fase 4: Orquestación del Pipeline</h2>
