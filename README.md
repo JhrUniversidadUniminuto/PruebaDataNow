@@ -356,7 +356,6 @@ Imagen evidencia:
 <p>
 Detalle:
 </p>
-<ul>
 <table border="1" cellspacing="0" cellpadding="6">
     <thead>
         <tr>
@@ -424,7 +423,7 @@ Detalle:
         </tr>
     </tbody>
 </table>  
-</ul>
+
 <hr>
 
 <h2>🏅 4. Entregable Fase 3: Pipeline End-to-End (Arquitectura Medallón)</h2>
