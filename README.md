@@ -407,7 +407,16 @@ Esta es la carpeta /pipelines dispuesta para la solución.
     <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/parametros.py">Ver</a>
   </li>  
 </ul>
-
+<h3>4.2 Reporte de calidad de datos generado por la capa Silver con métricas de al menos una ejecución</h3>
+<p>
+Este fue el mensaje que se obtiene de la capa silver.
+</p>
+<ul>
+  <li>
+    <strong>Resultado:</strong>
+    <img src="img/CargaExitozaSilver.png" width="450">
+  </li>
+</ul>
 <hr>
 
 <h2>⚙️ 5. Entregable Fase 4: Orquestación del Pipeline</h2>
