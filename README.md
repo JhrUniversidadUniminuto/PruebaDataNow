@@ -377,14 +377,17 @@ La siguiente tabla resume los recursos desplegados en Microsoft Azure mediante I
 <br>
 <h3>3.4 Archivo de variables o parámetros separado del código principal, sin credenciales expuestas</h3>
 <p>
-Nótese que el archivo "conexiones.py", tiene las cadenas de conexión usando mascaras de los parámetros
+Nótese que el archivo "conexiones.py", tiene las cadenas de conexión usando mascaras de los parámetros, estos parámetros están en el archivo "parametros.py", el cual es llamado en conexiones.
 </p>
 <ul>
   <li>
     <strong>conexion.py:</strong>
     <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/conexion.py">Ver</a>
   </li>
-    
+  <li>
+    <strong>parametros.py:</strong>
+    <a href="https://github.com/JhrUniversidadUniminuto/PruebaDataNow/blob/main/config/parametros.py>Ver</a>
+  </li>  
 </ul>
 <hr>
 
