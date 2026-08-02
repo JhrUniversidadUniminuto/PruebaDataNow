@@ -449,7 +449,6 @@ Se realiza la orquestación del proceso por medio de un menú de opciones.
     <strong>opciones:</strong>
   </li>
   <li>
-    <strong>parametros.py:</strong>
     <img src="img/Orquestador.png" width="450">
   </li>  
 </ul>
@@ -462,7 +461,6 @@ Mensaje de error en caso de fallo.
     <strong>opciones:</strong>
   </li>
   <li>
-    <strong>parametros.py:</strong>
     <img src="img/Errorseleccion.png" width="450">
   </li>  
 </ul>
