@@ -354,76 +354,85 @@ Imagen evidencia:
 <h3>3.3 Lista de recursos creados con sus nombres, regiones y propósito dentro de la solución</h3>
 
 <p>
-Detalle:
+La siguiente tabla resume los recursos desplegados en Microsoft Azure mediante Infraestructura como Código (IaC). Se indica el nombre de cada recurso, su tipo, la región donde fue aprovisionado y el papel que desempeña dentro de la arquitectura implementada.
 </p>
-<table border="1" cellspacing="0" cellpadding="6">
+
+<p align="center">
+<img src="img/RecursosCreadosAzure.png" width="900">
+</p>
+
+<br>
+
+<table border="1" cellspacing="0" cellpadding="6" width="100%">
     <thead>
-        <tr>
+        <tr bgcolor="#E6F2FF">
             <th>Recurso</th>
             <th>Tipo</th>
             <th>Región</th>
             <th>Propósito dentro de la solución</th>
         </tr>
     </thead>
+
     <tbody>
+
         <tr>
             <td><code>PruebasDataNow</code></td>
             <td>Resource Group</td>
             <td>East US</td>
-            <td>Contenedor lógico que agrupa todos los recursos de la solución para facilitar su administración, monitoreo y eliminación.</td>
+            <td>Contenedor lógico que agrupa todos los recursos de Azure utilizados por la solución para facilitar su administración, monitoreo y eliminación.</td>
         </tr>
 
         <tr>
             <td><code>stpruebasdatanowdev</code></td>
             <td>Storage Account (ADLS Gen2)</td>
             <td>East US</td>
-            <td>Almacena los datos del Data Lake siguiendo la arquitectura Medallón (Bronze, Silver y Gold). Es el repositorio principal de archivos Parquet y datos procesados.</td>
+            <td>Repositorio principal del Data Lake donde se almacenan las capas Bronze, Silver y Gold con archivos Parquet generados por el pipeline.</td>
         </tr>
 
         <tr>
             <td><code>adf-pruebasdatanow-dev</code></td>
             <td>Azure Data Factory V2</td>
             <td>East US</td>
-            <td>Orquesta el pipeline ETL/ELT, ejecutando las actividades de ingestión, transformación y carga entre las capas Bronze, Silver y Gold.</td>
+            <td>Orquesta la ejecución de los procesos ETL/ELT, coordinando la ingestión y transformación de datos.</td>
         </tr>
 
         <tr>
             <td><code>kv-pruebasdatanow-dev</code></td>
             <td>Azure Key Vault</td>
             <td>East US</td>
-            <td>Almacena de forma segura credenciales, cadenas de conexión, secretos y claves utilizadas por Azure Data Factory y otros servicios.</td>
+            <td>Almacena de forma segura secretos, credenciales y cadenas de conexión utilizadas por los diferentes servicios.</td>
         </tr>
 
         <tr>
             <td><code>log-pruebasdatanow-dev</code></td>
             <td>Log Analytics Workspace</td>
             <td>East US</td>
-            <td>Centraliza los registros, métricas y diagnósticos de los servicios de Azure para monitoreo y solución de errores.</td>
+            <td>Centraliza registros, métricas y diagnósticos para facilitar el monitoreo y la solución de incidentes.</td>
         </tr>
 
         <tr>
             <td><code>ag-pruebasdatanow-dev</code></td>
             <td>Action Group</td>
             <td>Global</td>
-            <td>Envía notificaciones por correo electrónico u otros medios cuando se generan alertas de monitoreo o fallan procesos del pipeline.</td>
+            <td>Gestiona el envío de alertas y notificaciones cuando se presentan eventos críticos o fallos en la solución.</td>
         </tr>
 
         <tr>
             <td><code>logitrackjulian2026PruebaDataNow</code></td>
             <td>Azure SQL Server</td>
             <td>Central US</td>
-            <td>Servidor lógico que hospeda la base de datos transaccional utilizada como fuente principal de información del negocio.</td>
+            <td>Servidor lógico que hospeda la base de datos transaccional utilizada como origen de información.</td>
         </tr>
 
         <tr>
             <td><code>LogiTrack_Transaccional</code></td>
             <td>Azure SQL Database</td>
             <td>Central US</td>
-            <td>Base de datos OLTP que almacena la información operacional de conductores, envíos, rutas GPS, novedades, remitentes, zonas y calificaciones antes de su procesamiento analítico.</td>
+            <td>Base de datos OLTP donde se almacenan conductores, envíos, rutas GPS, remitentes, novedades, zonas y demás información operacional.</td>
         </tr>
-    </tbody>
-</table>  
 
+    </tbody>
+</table>
 <hr>
 
 <h2>🏅 4. Entregable Fase 3: Pipeline End-to-End (Arquitectura Medallón)</h2>
