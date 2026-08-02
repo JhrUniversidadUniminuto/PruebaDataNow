@@ -290,7 +290,39 @@ El código fuente de la generación de datos sintéticos se encuentra en el sigu
     <strong>Diagrama</strong>
     <img src="img/Er.png" width="450">
   </li>
-
+<h3>2.4 Evidencia de la carga exitosa: captura de pantalla o resultado de SELECT COUNT(*) por tabla</h3>
+  <li>
+    <strong>OPE_CONDUCTORES</strong>
+    <img src="img/cargaOPE_CONDUCTORES.png" width="450">
+  </li>
+  <li>
+    <strong>Ciudades</strong>
+    <img src="img/CargaCiudad.png" width="450">
+  </li>
+  <li>
+    <strong>GeoZonas</strong>
+    <img src="img/GeoZonas.png" width="450">
+  </li>
+  <li>
+    <strong>Remitentes</strong>
+    <img src="img/CargaClientes.png" width="450">
+  </li>
+  <li>
+    <strong>Gps Rutas</strong>
+    <img src="img/Cargarutas.png" width="450">
+  </li>
+  <li>
+    <strong>Tms Envios</strong>
+    <img src="img/Cargatmfenvios.png" width="450">
+  </li>
+  <li>
+    <strong>Novedades</strong>
+    <img src="img/CargaNovedad.png" width="450">
+  </li>
+  <li>
+    <strong>Destinatarios</strong>
+    <img src="img/Cargardestinatarios.png" width="450">
+  </li>
 <hr>
 
 <h2>🏗️ 3. Entregable Fase 2: Infraestructura como Código (IaC)</h2>
