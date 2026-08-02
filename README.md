@@ -325,7 +325,7 @@ El código fuente de la generación de datos sintéticos se encuentra en el sigu
   </li>
 <hr>
 
-<h2>🏗️ 3. Entregable Fase 2: Infraestructura como Código (IaC)</h2>
+<h2>🏗️ 3. ENTREGABLE FASE 2 — INFRAESTRUCTURA COMO CODIGO</h2>
 <p>Aprovisionamiento modular con <strong>Terraform</strong> en <code>/infra</code>:</p>
 <ul>
     <img src="img/Er.png" width="450">
