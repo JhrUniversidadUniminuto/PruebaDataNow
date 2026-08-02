@@ -351,6 +351,80 @@ Imagen evidencia:
   </li>
     
 </ul>
+<h3>3.3 Lista de recursos creados con sus nombres, regiones y propósito dentro de la solución</h3>
+
+<p>
+Detalle:
+</p>
+<ul>
+<table border="1" cellspacing="0" cellpadding="6">
+    <thead>
+        <tr>
+            <th>Recurso</th>
+            <th>Tipo</th>
+            <th>Región</th>
+            <th>Propósito dentro de la solución</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>PruebasDataNow</code></td>
+            <td>Resource Group</td>
+            <td>East US</td>
+            <td>Contenedor lógico que agrupa todos los recursos de la solución para facilitar su administración, monitoreo y eliminación.</td>
+        </tr>
+
+        <tr>
+            <td><code>stpruebasdatanowdev</code></td>
+            <td>Storage Account (ADLS Gen2)</td>
+            <td>East US</td>
+            <td>Almacena los datos del Data Lake siguiendo la arquitectura Medallón (Bronze, Silver y Gold). Es el repositorio principal de archivos Parquet y datos procesados.</td>
+        </tr>
+
+        <tr>
+            <td><code>adf-pruebasdatanow-dev</code></td>
+            <td>Azure Data Factory V2</td>
+            <td>East US</td>
+            <td>Orquesta el pipeline ETL/ELT, ejecutando las actividades de ingestión, transformación y carga entre las capas Bronze, Silver y Gold.</td>
+        </tr>
+
+        <tr>
+            <td><code>kv-pruebasdatanow-dev</code></td>
+            <td>Azure Key Vault</td>
+            <td>East US</td>
+            <td>Almacena de forma segura credenciales, cadenas de conexión, secretos y claves utilizadas por Azure Data Factory y otros servicios.</td>
+        </tr>
+
+        <tr>
+            <td><code>log-pruebasdatanow-dev</code></td>
+            <td>Log Analytics Workspace</td>
+            <td>East US</td>
+            <td>Centraliza los registros, métricas y diagnósticos de los servicios de Azure para monitoreo y solución de errores.</td>
+        </tr>
+
+        <tr>
+            <td><code>ag-pruebasdatanow-dev</code></td>
+            <td>Action Group</td>
+            <td>Global</td>
+            <td>Envía notificaciones por correo electrónico u otros medios cuando se generan alertas de monitoreo o fallan procesos del pipeline.</td>
+        </tr>
+
+        <tr>
+            <td><code>logitrackjulian2026PruebaDataNow</code></td>
+            <td>Azure SQL Server</td>
+            <td>Central US</td>
+            <td>Servidor lógico que hospeda la base de datos transaccional utilizada como fuente principal de información del negocio.</td>
+        </tr>
+
+        <tr>
+            <td><code>LogiTrack_Transaccional</code></td>
+            <td>Azure SQL Database</td>
+            <td>Central US</td>
+            <td>Base de datos OLTP que almacena la información operacional de conductores, envíos, rutas GPS, novedades, remitentes, zonas y calificaciones antes de su procesamiento analítico.</td>
+        </tr>
+    </tbody>
+</table>  
+</ul>
 <hr>
 
 <h2>🏅 4. Entregable Fase 3: Pipeline End-to-End (Arquitectura Medallón)</h2>
